@@ -1,4 +1,4 @@
-package com.gamesite.backend;
+package com.gamesite;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
