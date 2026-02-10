@@ -1,7 +1,6 @@
 package com.gamesite.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,25 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "players")
+@Table(name = "game_types")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Player {
+public class GameType {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message = "Username is required")
+    @NotBlank(message = "Game type name is required")
     @Column(nullable = false, unique = true)
-    private String username;
+    private String name;
     
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email must be valid")
-    @Column(nullable = false, unique = true)
-    private String email;
+    @OneToMany(mappedBy = "gameType", cascade = CascadeType.ALL)
+    private List<Game> games = new ArrayList<>();
     
-    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "gameType", cascade = CascadeType.ALL)
     private List<PlayerRanking> rankings = new ArrayList<>();
 }

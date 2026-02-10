@@ -1,17 +1,20 @@
 package com.gamesite.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.time.Instant;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GameDto {
     private Long id;
-    private String name;
+    private Instant startTime;
+    private Instant endTime;
+    private Double scorePlayer1;
+    private Double scorePlayer2;
+    private Long player1Id;
+    private Long player2Id;
     private Long gameTypeId;
-
-    // Getters et Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public Long getGameTypeId() { return gameTypeId; }
-    public void setGameTypeId(Long gameTypeId) { this.gameTypeId = gameTypeId; }
 }
