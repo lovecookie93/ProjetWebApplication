@@ -1,21 +1,17 @@
 package com.gamesite.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.time.Instant;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlayerRankingDto {
     private Long id;
+    private Integer points;
+    private Instant dateAchieved;
     private Long playerId;
     private Long gameTypeId;
-    private int rank;
-
-    // Getters et Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public Long getPlayerId() { return playerId; }
-    public void setPlayerId(Long playerId) { this.playerId = playerId; }
-
-    public Long getGameTypeId() { return gameTypeId; }
-    public void setGameTypeId(Long gameTypeId) { this.gameTypeId = gameTypeId; }
-
-    public int getRank() { return rank; }
-    public void setRank(int rank) { this.rank = rank; }
 }
