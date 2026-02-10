@@ -1,0 +1,49 @@
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-cyan);
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart-box {
+  height: 200px;
+  background: linear-gradient(transparent, rgba(0, 242, 255, 0.05));
+  border-bottom: 2px solid #333;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th {
+  text-align: left;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  padding-bottom: 10px;
+}
+
+.history-table td {
+  padding: 10px 0;
+  border-bottom: 1px solid #25282e;
+}
+
+.status-win { color: var(--accent-cyan); }
+.status-lose { color: var(--accent-purple); }

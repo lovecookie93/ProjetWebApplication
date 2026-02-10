@@ -1,0 +1,36 @@
+<div class="home-wrapper">
+  
+  <section class="banner-card">
+    <div class="banner-content">
+      <h1>Prêt à Jouer ?<br>Des Défis Infinis Vous Attendent.</h1>
+      <button routerLink="/games" class="btn-cyan">JOUER MAINTENANT</button>
+    </div>
+  </section>
+
+  <div class="bottom-section">
+    
+    <div class="games-area">
+      <h2 class="section-title">NOS JEUX</h2>
+      <div class="game-grid">
+        <div class="game-item" *ngFor="let game of games">
+          <div class="game-icon-container">
+            <span class="emoji-icon">{{ game.icon }}</span>
+          </div>
+          <p>{{ game.name }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="leaderboard-area">
+      <h2 class="section-title">TOP JOUEURS</h2>
+      <ul class="player-list">
+        <li *ngFor="let player of topPlayers; let i = index">
+          <span class="rank">{{ i + 1 }}. {{ player.name }}</span>
+          <span class="score">{{ player.score }}</span>
+        </li>
+      </ul>
+      <button class="btn-outline">VOIR CLASSEMENT</button>
+    </div>
+
+  </div>
+</div>
