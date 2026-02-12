@@ -1,0 +1,32 @@
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Prêt à jouer ?</h1>
+      <h2>Des défis infinis vous attendent.</h2>
+      <button class="btn-primary">Jouer maintenant</button>
+    </div>
+  </section>
+
+  <section class="games-section">
+    <h3>Jeux populaires</h3>
+
+    <div class="games-grid">
+      <div class="card game-card" *ngFor="let game of games">
+        <div class="icon">🎮</div>
+        <h4>{{ game.name }}</h4>
+        <p>{{ game.description }}</p>
+        <button class="btn-primary">Play</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="top-players card">
+    <h3>🏆 Top Joueurs</h3>
+    <div class="player" *ngFor="let player of topPlayers">
+      <span>{{ player.name }}</span>
+      <span class="score">{{ player.score }} pts</span>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,52 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  font-size: 50px;
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.highlight {
+  color: #22d3ee;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat p {
+  font-size: 28px;
+  color: #6366f1;
+}
+
+.history table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+.history th, .history td {
+  padding: 12px;
+  text-align: left;
+}
+
+.win {
+  color: #22c55e;
+}
+
+.lose {
+  color: #ef4444;
+}
