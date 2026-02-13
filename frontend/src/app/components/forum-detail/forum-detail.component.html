@@ -1,0 +1,18 @@
+<div class="container" style="margin-top: 80px; padding: 20px; color: white;">
+  <div style="margin-bottom: 20px;">
+    <a routerLink="/forum" style="color: #888; text-decoration: none;">← Retour aux forums</a>
+    <h1 style="color: #00d2ff; margin-top: 10px;">{{ topicName }}</h1>
+  </div>
+
+  <div class="chat-container">
+    <div class="msg" *ngFor="let m of messages" style="background: rgba(48, 54, 61, 0.4);">
+      <span class="msg-author">@{{ m.author }} <span class="msg-date">{{ m.date }}</span></span>
+      <div class="msg-content">{{ m.text }}</div>
+    </div>
+
+    <div class="input-zone">
+      <input type="text" placeholder="Écrivez votre message...">
+      <button>ENVOYER</button>
+    </div>
+  </div>
+</div>

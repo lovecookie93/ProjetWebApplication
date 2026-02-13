@@ -3,25 +3,25 @@
   <div class="profile-header card">
     <div class="avatar">👤</div>
     <div>
-      <h2>Nova</h2>
-      <p>Score global : <span class="highlight">2500 pts</span></p>
+      <h2>{{ user.username }}</h2>
+      <p>Score global : <span class="highlight">{{ user.globalScore }} pts</span></p>
     </div>
   </div>
 
   <div class="stats-grid">
     <div class="card stat">
       <h4>Parties jouées</h4>
-      <p>120</p>
+      <p>{{ user.gamesPlayed }}</p>
     </div>
 
     <div class="card stat">
       <h4>Multijoueur</h4>
-      <p>35</p>
+      <p>{{ user.multiplayer }}</p>
     </div>
 
     <div class="card stat">
-      <h4>Meilleur score</h4>
-      <p>980</p>
+      <h4>Dernier Score</h4>
+      <p>{{ gameHistory.length > 0 ? gameHistory[0].scorePlayer1 : 0 }}</p>
     </div>
   </div>
 
@@ -29,27 +29,36 @@
     <h3>Historique des parties</h3>
 
     <table>
-      <tr>
-        <th>Jeu</th>
-        <th>Date</th>
-        <th>Score</th>
-        <th>Résultat</th>
-      </tr>
-
-      <tr>
-        <td>Snake</td>
-        <td>08/03</td>
-        <td>150</td>
-        <td class="win">Gagné</td>
-      </tr>
-
-      <tr>
-        <td>Sudoku</td>
-        <td>06/03</td>
-        <td>80</td>
-        <td class="lose">Perdu</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Jeu</th>
+          <th>Date</th>
+          <th>Score</th>
+          <th>Résultat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of gameHistory">
+          <td>
+            <strong *ngIf="game.gameTypeId === 1">🐍 Snake</strong>
+            <strong *ngIf="game.gameTypeId === 2">❌ Tic-Tac-Toe</strong>
+            <strong *ngIf="game.gameTypeId === 3">🔢 Sudoku</strong>
+            <strong *ngIf="game.gameTypeId === 4">✊ Chifoumi</strong>
+          </td>
+          
+          <td>{{ game.startTime | date:'dd/MM HH:mm' }}</td>
+          <td>{{ game.scorePlayer1 }} pts</td>
+          
+          <td [class.win]="game.scorePlayer1 > 0" [class.lose]="game.scorePlayer1 === 0">
+            {{ game.scorePlayer1 > 0 ? 'Terminé' : 'Échec' }}
+          </td>
+        </tr>
+      </tbody>
     </table>
+
+    <div *ngIf="gameHistory.length === 0" class="empty-msg">
+      <p>Aucune partie dans la base de données. Va jouer un match !</p>
+    </div>
   </div>
 
 </div>

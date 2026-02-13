@@ -1,0 +1,41 @@
+<div class="game-container">
+  <div class="mode-selector">
+    <button (click)="setMode(false)" [class.active]="!isTwoPlayers">VS IA</button>
+    <button (click)="setMode(true)" [class.active]="isTwoPlayers">VS AMI</button>
+  </div>
+
+  <h1 class="title">{{ isTwoPlayers ? 'CHIFOUMI' : 'SÉANCE ENTRAÎNEMENT' }}</h1>
+  
+  <div class="scoreboard">
+    <div class="score">P1: {{ scoreP1 }}</div>
+    <div class="score">{{ isTwoPlayers ? 'P2' : 'IA' }}: {{ scoreP2 }}</div>
+  </div>
+
+  <div class="battle-arena">
+    <div class="slot">
+      <span class="label">JOUEUR 1</span>
+      <div class="choice-display" [style.color]="player1Choice?.color">
+        {{ (isTwoPlayers && turn === 2 && !player2Choice) ? '🔒' : (player1Choice?.emoji || '?') }}
+      </div>
+    </div>
+    
+    <div class="vs">VS</div>
+
+    <div class="slot">
+      <span class="label">{{ isTwoPlayers ? 'JOUEUR 2' : 'IA' }}</span>
+      <div class="choice-display" [style.color]="player2Choice?.color">
+        {{ player2Choice?.emoji || '?' }}
+      </div>
+    </div>
+  </div>
+
+  <h2 class="result-text">{{ resultMessage }}</h2>
+
+  <div class="actions" *ngIf="!player2Choice">
+    <button *ngFor="let c of choices" (click)="play(c)" [style.border-color]="c.color" class="choice-btn">
+      {{ c.emoji }}
+    </button>
+  </div>
+
+  <button class="reset-btn" *ngIf="player2Choice" (click)="reset()">REJOUER</button>
+</div>

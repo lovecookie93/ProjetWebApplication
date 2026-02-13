@@ -1,1 +1,19 @@
-<p>games works!</p>
+<div class="container">
+    <header class="games-header">
+        <h1>Zone Arcade</h1>
+        <p>Sélectionne un défi pour commencer ta légende.</p>
+    </header>
+
+    <div class="games-grid">
+        <div class="game-card" *ngFor="let game of games" (click)="playGame(game.id)">
+            <div class="icon-wrapper" [style.border-color]="game.color">
+                <span class="emoji">{{ game.icon }}</span>
+            </div>
+            <div class="card-content">
+                <h2 [style.color]="game.color">{{ game.name }}</h2>
+                <p>{{ game.description }}</p>
+                <button class="play-btn" [style.background]="game.color">Play</button>
+            </div>
+        </div>
+    </div>
+</div>

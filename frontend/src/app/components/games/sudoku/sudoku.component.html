@@ -1,0 +1,18 @@
+<div class="game-container">
+  <h1>SUDOKU</h1>
+  <p class="msg">{{ message }}</p>
+
+  <div class="sudoku-grid">
+    <div *ngFor="let row of grid; let r = index" class="row">
+      <div *ngFor="let cell of row; let c = index" class="cell">
+        <input 
+          type="number" 
+          [value]="cell !== 0 ? cell : ''" 
+          [disabled]="cell !== 0"
+          (input)="updateCell(r, c, $event)"
+          max="4" min="1">
+      </div>
+    </div>
+  </div>
+
+  <button class="reset-btn" (click)="resetGame()">Nouvelle Grille</button>

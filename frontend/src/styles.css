@@ -1,6 +1,9 @@
 /* ===== GLOBAL VORTEX THEME ===== */
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-quartz.css';
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: radial-gradient(circle at top left, #0f172a, #020617);
@@ -14,6 +17,7 @@ body {
   padding: 40px 0;
 }
 
+/* CARTES ET BOUTONS */
 .card {
   background: rgba(30, 41, 59, 0.6);
   backdrop-filter: blur(12px);
@@ -40,6 +44,76 @@ body {
   transition: 0.3s;
 }
 
-.btn-primary:hover {
-  opacity: 0.85;
+/* TITRE FORUM */
+.forum-title {
+    color: #00d2ff !important;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8), 0 0 20px rgba(0, 210, 255, 0.4) !important;
+    margin-bottom: 5px;
+}
+
+.forum-subtitle {
+    color: #b1b1b1;
+    margin-bottom: 30px;
+}
+
+/* TABLEAU AG-GRID VORTEX STYLE */
+.grid-wrapper {
+    background: rgba(13, 17, 23, 0.8);
+    border: 1px solid #30363d;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* --- FIX EXTRÊME : ON CIBLE LES CLASSES DIRECTEMENT --- */
+/* Pas de ::ng-deep ici car on est dans styles.css global */
+
+.ag-theme-quartz-dark {
+    --ag-background-color: #0f172a !important; 
+    --ag-header-background-color: rgba(30, 41, 59, 0.9) !important;
+    --ag-odd-row-background-color: #0f172a !important;
+    --ag-header-foreground-color: #00d2ff !important;
+    --ag-foreground-color: #ffffff !important;
+    --ag-border-color: #30363d !important;
+    --ag-row-height: 65px;
+    --ag-header-height: 50px;
+    --ag-font-size: 15px;
+}
+
+/* Forcer le fond sombre sur les lignes (C'est ça qui était blanc) */
+.ag-theme-quartz-dark .ag-row {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+/* Forcer le fond sombre sur le conteneur global */
+.ag-root-wrapper, .ag-root-wrapper-body, .ag-root {
+    background-color: #0f172a !important;
+}
+
+/* Header */
+.ag-header {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-bottom: 1px solid #00d2ff !important;
+}
+
+.ag-header-cell-label {
+    color: #00d2ff !important;
+}
+
+/* Effet Hover */
+.ag-theme-quartz-dark .ag-row:hover {
+    background-color: rgba(0, 210, 255, 0.15) !important;
+    cursor: pointer;
+}
+
+/* Cellules */
+.ag-cell {
+    display: flex;
+    align-items: center;
+    border: none !important;
 }

@@ -1,1 +1,24 @@
-<p>forum works!</p>
+<div class="container">
+  <div class="header-section">
+      <div>
+          <h1 class="forum-title">Espace Communauté</h1>
+          <p class="forum-subtitle">Rejoignez l'élite. Partagez vos stratégies.</p>
+      </div>
+      
+      <div class="search-box">
+          <input type="text" (input)="onSearch($event)" placeholder="Rechercher un sujet, un joueur..." />
+          <span class="search-icon">🔍</span>
+      </div>
+  </div>
+  
+  <div class="grid-wrapper">
+    <ag-grid-angular
+        style="width: 100%; height: 500px;" 
+        class="ag-theme-quartz-dark" 
+        [rowData]="forumList"
+        [columnDefs]="colDefs"
+        [quickFilterText]="searchText"
+        (rowClicked)="onRowClicked($event)">
+    </ag-grid-angular>
+  </div>
+</div>

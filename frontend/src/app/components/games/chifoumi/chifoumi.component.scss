@@ -1,0 +1,33 @@
+.game-container { text-align: center; padding: 50px; color: white; }
+.title { color: #00d2ff; text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); }
+
+.scoreboard { display: flex; justify-content: center; gap: 40px; margin: 30px 0; font-size: 1.5rem; font-weight: bold; }
+.score { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 10px; border: 1px solid rgba(0,210,255,0.3); }
+
+.battle-arena { display: flex; align-items: center; justify-content: center; gap: 50px; margin: 40px 0; }
+.choice-display { font-size: 5rem; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; background: rgba(13, 17, 23, 0.8); border: 2px solid; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.vs { font-size: 2rem; font-weight: 900; color: #ff4444; }
+
+.actions { display: flex; gap: 20px; justify-content: center; }
+.choice-btn { font-size: 3rem; background: none; border: 3px solid; border-radius: 50%; width: 100px; height: 100px; cursor: pointer; transition: 0.3s; }
+.choice-btn:hover { transform: scale(1.1); background: rgba(255,255,255,0.05); }
+
+.reset-btn { margin-top: 30px; padding: 12px 30px; border-radius: 10px; border: none; background: #00d2ff; color: #000; font-weight: bold; cursor: pointer; }
+
+.mode-selector { margin-bottom: 20px; }
+.mode-selector button {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #00d2ff;
+    color: #00d2ff;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.mode-selector button.active {
+    background: #00d2ff;
+    color: #000;
+}
+.mode-selector button:first-child { border-radius: 10px 0 0 10px; }
+.mode-selector button:last-child { border-radius: 0 10px 10px 0; }
+
+/* ... garde le reste du CSS d'avant ... */

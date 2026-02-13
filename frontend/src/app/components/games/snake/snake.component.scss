@@ -1,0 +1,27 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+canvas {
+    border: 3px solid #00d2ff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+    border-radius: 12px;
+}
+
+.hud {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #00d2ff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+.overlay {
+    margin-top: 20px;
+    color: #ff4444;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}

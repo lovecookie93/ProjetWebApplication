@@ -1,26 +1,40 @@
-import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GameApiService } from '../../services/game-api.service';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [NgFor],
+  imports: [CommonModule],
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
+  private gameApiService = inject(GameApiService);
 
   user = {
-    username: 'PlayerOne',
-    globalScore: 2450,
-    gamesPlayed: 120,
-    multiplayer: 35
+    username: 'Nova',
+    globalScore: 0,
+    gamesPlayed: 0,
+    multiplayer: 0
   };
 
-  stats = [
-    { name: 'Tic-Tac-Toe', score: 800 },
-    { name: 'Snake', score: 950 },
-    { name: 'Sudoku', score: 700 }
-  ];
+  gameHistory: any[] = [];
 
+  ngOnInit() {
+    this.loadStats();
+  }
+
+  loadStats() {
+    // On récupère les parties du joueur 1
+    this.gameApiService.getGamesByPlayer(1).subscribe({
+      next: (data) => {
+        this.gameHistory = data.reverse(); // Plus récents en premier
+        this.user.gamesPlayed = data.length;
+        // On calcule le score total
+        this.user.globalScore = data.reduce((acc, game) => acc + (game.scorePlayer1 || 0), 0);
+      },
+      error: (err) => console.error("Erreur API :", err)
+    });
+  }
 }
