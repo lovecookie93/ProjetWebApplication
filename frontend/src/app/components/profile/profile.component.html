@@ -1,55 +1,98 @@
 <div class="container dashboard">
 
-  <div class="profile-header card">
-    <div class="avatar">👤</div>
-    <div>
-      <h2>Nova</h2>
-      <p>Score global : <span class="highlight">2500 pts</span></p>
+  <!-- COLONNE LISTE JOUEURS -->
+  <div class="players-list card">
+    <h3>👥 Liste des joueurs</h3>
+
+    <div 
+      class="player-item"
+      *ngFor="let player of players"
+      (dblclick)="selectPlayer(player)"
+    >
+      {{ player.username }}
     </div>
+
+
+<!--creation d'un joueur-->
+  </div>
+  
+
+
+
+  <!-- COLONNE DETAILS -->
+  <div class="player-details" *ngIf="selectedPlayer as p">
+
+    <div class="profile-header card">
+      <div class="avatar">👤</div>
+      <div>
+        <h2>{{ p.username }}</h2>
+        <p>{{ p.email }}</p>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="card stat">
+        <h4>Parties jouées</h4>
+        <p>120</p>
+      </div>
+
+      <div class="card stat">
+        <h4>Multijoueur</h4>
+        <p>35</p>
+      </div>
+
+      <div class="card stat">
+        <h4>Meilleur score</h4>
+        <p>980</p>
+      </div>
+    </div>
+
+    <div class="card history">
+      <h3>Historique des parties</h3>
+
+      <table>
+        <tr>
+          <th>Jeu</th>
+          <th>Date</th>
+          <th>Score</th>
+          <th>Résultat</th>
+        </tr>
+
+        <tr>
+          <td>Snake</td>
+          <td>08/03</td>
+          <td>150</td>
+          <td class="win">Gagné</td>
+        </tr>
+
+        <tr>
+          <td>Sudoku</td>
+          <td>06/03</td>
+          <td>80</td>
+          <td class="lose">Perdu</td>
+        </tr>
+      </table>
+    </div>
+
   </div>
 
-  <div class="stats-grid">
-    <div class="card stat">
-      <h4>Parties jouées</h4>
-      <p>120</p>
-    </div>
+  <div class="create-player card">
+  <h4>➕ Créer un joueur</h4>
 
-    <div class="card stat">
-      <h4>Multijoueur</h4>
-      <p>35</p>
-    </div>
+  <input
+    type="text"
+    placeholder="Nom d'utilisateur"
+    [(ngModel)]="newUsername"
+  />
 
-    <div class="card stat">
-      <h4>Meilleur score</h4>
-      <p>980</p>
-    </div>
+  <input
+    type="email"
+    placeholder="Email"
+    [(ngModel)]="newEmail"
+  />
+
+  <button class="btn-primary" (click)="addPlayer()">
+    Ajouter
+  </button>
   </div>
-
-  <div class="card history">
-    <h3>Historique des parties</h3>
-
-    <table>
-      <tr>
-        <th>Jeu</th>
-        <th>Date</th>
-        <th>Score</th>
-        <th>Résultat</th>
-      </tr>
-
-      <tr>
-        <td>Snake</td>
-        <td>08/03</td>
-        <td>150</td>
-        <td class="win">Gagné</td>
-      </tr>
-
-      <tr>
-        <td>Sudoku</td>
-        <td>06/03</td>
-        <td>80</td>
-        <td class="lose">Perdu</td>
-      </tr>
-    </table>
-  </div>
-
 </div>

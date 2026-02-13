@@ -50,3 +50,46 @@
 .lose {
   color: #ef4444;
 }
+
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+}
+
+.players-list {
+  height: fit-content;
+}
+
+.player-item {
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 8px;
+}
+
+.player-item:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.create-player {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-player input {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+

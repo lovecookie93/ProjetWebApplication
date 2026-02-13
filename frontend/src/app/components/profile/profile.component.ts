@@ -1,26 +1,63 @@
-import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { NgIf, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PlayerService } from '../../core/services/player.service';
+import { Player } from '../../shared/models/player.model';
 
 @Component({
-  selector: 'app-profile',
   standalone: true,
-  imports: [NgFor],
+  selector: 'app-profile',
+  imports: [NgIf, NgFor, FormsModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
-  user = {
-    username: 'PlayerOne',
-    globalScore: 2450,
-    gamesPlayed: 120,
-    multiplayer: 35
-  };
+  players: Player[] = [];
+  selectedPlayer?: Player;
 
-  stats = [
-    { name: 'Tic-Tac-Toe', score: 800 },
-    { name: 'Snake', score: 950 },
-    { name: 'Sudoku', score: 700 }
-  ];
+  // Form fields
+  newUsername: string = '';
+  newEmail: string = '';
 
+  constructor(private playerService: PlayerService) {}
+
+  ngOnInit(): void {
+    this.loadPlayers();
+  }
+
+  loadPlayers(): void {
+    this.playerService.getAllPlayers().subscribe({
+      next: (data: Player[]) => {
+        this.players = data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+  }
+
+  selectPlayer(player: Player): void {
+    this.selectedPlayer = player;
+  }
+
+  addPlayer(): void {
+    if (!this.newUsername || !this.newEmail) return;
+
+    const newPlayer = {
+      username: this.newUsername,
+      email: this.newEmail
+    };
+
+    this.playerService.createPlayer(newPlayer).subscribe({
+      next: () => {
+        this.newUsername = '';
+        this.newEmail = '';
+        this.loadPlayers(); // refresh list
+      },
+      error: (err: any) => {
+        console.error('Erreur création joueur:', err);
+      }
+    });
+  }
 }
