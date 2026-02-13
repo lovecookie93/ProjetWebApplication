@@ -1,0 +1,22 @@
+### Créer un joueur
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "GamerPro42",
+  "email": "pro@gaming.com"
+}
+
+### Récupérer tous les joueurs
+GET http://localhost:8080/api/players
+
+### Créer un type de jeu
+POST http://localhost:8080/api/game-types
+Content-Type: application/json
+
+{
+  "name": "Chess"
+}
+
+### Récupérer tous les types de jeu
+GET http://localhost:8080/api/game-types
