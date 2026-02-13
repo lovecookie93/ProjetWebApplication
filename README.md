@@ -448,19 +448,9 @@ git push origin feature/nom-de-la-feature
 
 ---
 
-## 📞 Contact
-
-**Équipe GameHub**
-- Backend Developer : [Votre nom]
-- Frontend Developers : [Noms de tes copines]
-- Email : contact@gamehub.com
-- GitHub : [Lien du repository]
-
----
-
 ## 📄 Licence
 
-Ce projet est réalisé dans le cadre d'un **projet académique** à [Nom de votre école/université].
+Ce projet est réalisé dans le cadre du cours **Web Application Architectures** à l'ESILV.
 
 ---
 
