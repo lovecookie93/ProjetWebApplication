@@ -8,6 +8,7 @@ import com.gamesite.repository.MessageRepository;
 import com.gamesite.repository.PlayerRepository;
 import com.gamesite.repository.ForumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

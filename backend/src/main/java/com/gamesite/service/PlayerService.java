@@ -4,6 +4,7 @@ import com.gamesite.dto.PlayerDto;
 import com.gamesite.entity.Player;
 import com.gamesite.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
