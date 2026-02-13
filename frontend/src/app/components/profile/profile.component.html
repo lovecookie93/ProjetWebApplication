@@ -1,13 +1,6 @@
 <div class="container dashboard">
 
-<<<<<<< HEAD
-  <div class="profile-header card">
-    <div class="avatar">👤</div>
-    <div>
-      <h2>{{ user.username }}</h2>
-      <p>Score global : <span class="highlight">{{ user.globalScore }} pts</span></p>
-=======
-  <!-- COLONNE LISTE JOUEURS -->
+  <!-- 🔹 COLONNE GAUCHE : LISTE DES JOUEURS -->
   <div class="players-list card">
     <h3>👥 Liste des joueurs</h3>
 
@@ -17,90 +10,88 @@
       (dblclick)="selectPlayer(player)"
     >
       {{ player.username }}
->>>>>>> d4a1b05c4d9f2679ce16d78b399c8952732ea6b0
     </div>
 
+    <!-- 🔹 FORMULAIRE CREATION JOUEUR -->
+    <div class="create-player">
+      <h4>➕ Créer un joueur</h4>
 
-<!--creation d'un joueur-->
+      <input
+        type="text"
+        placeholder="Nom d'utilisateur"
+        [(ngModel)]="newUsername"
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="newEmail"
+      />
+
+      <button class="btn-primary" (click)="addPlayer()">
+        Ajouter
+      </button>
+    </div>
+
   </div>
-  
 
 
-
-  <!-- COLONNE DETAILS -->
+  <!-- 🔹 COLONNE DROITE : DETAILS JOUEUR -->
   <div class="player-details" *ngIf="selectedPlayer as p">
 
+    <!-- HEADER -->
     <div class="profile-header card">
       <div class="avatar">👤</div>
       <div>
         <h2>{{ p.username }}</h2>
-        <p>{{ p.email }}</p>
+        <p>Email : {{ p.email }}</p>
       </div>
     </div>
 
+    <!-- STATS (temporairement statiques, on connectera après) -->
     <div class="stats-grid">
       <div class="card stat">
         <h4>Parties jouées</h4>
-        <p>120</p>
+        <p>--</p>
       </div>
 
       <div class="card stat">
         <h4>Multijoueur</h4>
-        <p>35</p>
+        <p>--</p>
       </div>
 
       <div class="card stat">
         <h4>Meilleur score</h4>
-        <p>980</p>
+        <p>--</p>
       </div>
     </div>
 
+    <!-- HISTORIQUE (placeholder pour futur backend) -->
     <div class="card history">
       <h3>Historique des parties</h3>
 
       <table>
-        <tr>
-          <th>Jeu</th>
-          <th>Date</th>
-          <th>Score</th>
-          <th>Résultat</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Jeu</th>
+            <th>Date</th>
+            <th>Score</th>
+            <th>Résultat</th>
+          </tr>
+        </thead>
 
-        <tr>
-          <td>Snake</td>
-          <td>08/03</td>
-          <td>150</td>
-          <td class="win">Gagné</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Snake</td>
+            <td>08/03</td>
+            <td>150</td>
+            <td class="win">Gagné</td>
+          </tr>
 
-        <tr>
-          <td>Sudoku</td>
-          <td>06/03</td>
-          <td>80</td>
-          <td class="lose">Perdu</td>
-        </tr>
-      </table>
-    </div>
-
-  </div>
-
-  <div class="create-player card">
-  <h4>➕ Créer un joueur</h4>
-
-  <input
-    type="text"
-    placeholder="Nom d'utilisateur"
-    [(ngModel)]="newUsername"
-  />
-
-  <input
-    type="email"
-    placeholder="Email"
-    [(ngModel)]="newEmail"
-  />
-
-  <button class="btn-primary" (click)="addPlayer()">
-    Ajouter
-  </button>
-  </div>
-</div>
+          <tr>
+            <td>Sudoku</td>
+            <td>06/03</td>
+            <td>80</td>
+            <td class="lose">Perdu</td>
+          </tr>
+        </tbody>

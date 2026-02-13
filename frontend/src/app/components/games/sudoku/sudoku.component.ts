@@ -7,7 +7,7 @@ import { GameApiService } from '../../../services/game-api.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sudoku.component.html',
-  styleUrl: './sudoku.component.css'
+  styleUrl: './sudoku.component.scss'
 })
 export class SudokuComponent {
   private gameApiService = inject(GameApiService);

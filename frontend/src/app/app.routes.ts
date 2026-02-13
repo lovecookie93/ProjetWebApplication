@@ -6,7 +6,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import { ForumDetailComponent } from './components/forum-detail/forum-detail.component';
 import { SnakeComponent } from './components/games/snake/snake.component';
 import { ChifoumiComponent } from './components/games/chifoumi/chifoumi.component';
-import { SudokuComponent } from './components/games/sudoku/sudoku.component'; // <--- AJOUTE CET IMPORT
+import { SudokuComponent } from './components/games/sudoku/sudoku.component'; 
 import { TicTacToeComponent } from './components/games/tic-tac-toe/tic-tac-toe.component';
 
 export const routes: Routes = [
