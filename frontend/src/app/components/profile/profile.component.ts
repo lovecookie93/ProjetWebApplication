@@ -1,40 +1,63 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { GameApiService } from '../../services/game-api.service';
+import { Component, OnInit } from '@angular/core';
+import { NgIf, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PlayerService } from '../../core/services/player.service';
+import { Player } from '../../shared/models/player.model';
 
 @Component({
-  selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule],
+  selector: 'app-profile',
+  imports: [NgIf, NgFor, FormsModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  private gameApiService = inject(GameApiService);
 
-  user = {
-    username: 'Nova',
-    globalScore: 0,
-    gamesPlayed: 0,
-    multiplayer: 0
-  };
+  players: Player[] = [];
+  selectedPlayer?: Player;
 
-  gameHistory: any[] = [];
+  // Form fields
+  newUsername: string = '';
+  newEmail: string = '';
 
-  ngOnInit() {
-    this.loadStats();
+  constructor(private playerService: PlayerService) {}
+
+  ngOnInit(): void {
+    this.loadPlayers();
   }
 
-  loadStats() {
-    // On récupère les parties du joueur 1
-    this.gameApiService.getGamesByPlayer(1).subscribe({
-      next: (data) => {
-        this.gameHistory = data.reverse(); // Plus récents en premier
-        this.user.gamesPlayed = data.length;
-        // On calcule le score total
-        this.user.globalScore = data.reduce((acc, game) => acc + (game.scorePlayer1 || 0), 0);
+  loadPlayers(): void {
+    this.playerService.getAllPlayers().subscribe({
+      next: (data: Player[]) => {
+        this.players = data;
       },
-      error: (err) => console.error("Erreur API :", err)
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+  }
+
+  selectPlayer(player: Player): void {
+    this.selectedPlayer = player;
+  }
+
+  addPlayer(): void {
+    if (!this.newUsername || !this.newEmail) return;
+
+    const newPlayer = {
+      username: this.newUsername,
+      email: this.newEmail
+    };
+
+    this.playerService.createPlayer(newPlayer).subscribe({
+      next: () => {
+        this.newUsername = '';
+        this.newEmail = '';
+        this.loadPlayers(); // refresh list
+      },
+      error: (err: any) => {
+        console.error('Erreur création joueur:', err);
+      }
     });
   }
 }

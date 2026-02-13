@@ -1,64 +1,106 @@
 <div class="container dashboard">
 
+<<<<<<< HEAD
   <div class="profile-header card">
     <div class="avatar">👤</div>
     <div>
       <h2>{{ user.username }}</h2>
       <p>Score global : <span class="highlight">{{ user.globalScore }} pts</span></p>
+=======
+  <!-- COLONNE LISTE JOUEURS -->
+  <div class="players-list card">
+    <h3>👥 Liste des joueurs</h3>
+
+    <div 
+      class="player-item"
+      *ngFor="let player of players"
+      (dblclick)="selectPlayer(player)"
+    >
+      {{ player.username }}
+>>>>>>> d4a1b05c4d9f2679ce16d78b399c8952732ea6b0
     </div>
+
+
+<!--creation d'un joueur-->
   </div>
+  
 
-  <div class="stats-grid">
-    <div class="card stat">
-      <h4>Parties jouées</h4>
-      <p>{{ user.gamesPlayed }}</p>
+
+
+  <!-- COLONNE DETAILS -->
+  <div class="player-details" *ngIf="selectedPlayer as p">
+
+    <div class="profile-header card">
+      <div class="avatar">👤</div>
+      <div>
+        <h2>{{ p.username }}</h2>
+        <p>{{ p.email }}</p>
+      </div>
     </div>
 
-    <div class="card stat">
-      <h4>Multijoueur</h4>
-      <p>{{ user.multiplayer }}</p>
+    <div class="stats-grid">
+      <div class="card stat">
+        <h4>Parties jouées</h4>
+        <p>120</p>
+      </div>
+
+      <div class="card stat">
+        <h4>Multijoueur</h4>
+        <p>35</p>
+      </div>
+
+      <div class="card stat">
+        <h4>Meilleur score</h4>
+        <p>980</p>
+      </div>
     </div>
 
-    <div class="card stat">
-      <h4>Dernier Score</h4>
-      <p>{{ gameHistory.length > 0 ? gameHistory[0].scorePlayer1 : 0 }}</p>
-    </div>
-  </div>
+    <div class="card history">
+      <h3>Historique des parties</h3>
 
-  <div class="card history">
-    <h3>Historique des parties</h3>
-
-    <table>
-      <thead>
+      <table>
         <tr>
           <th>Jeu</th>
           <th>Date</th>
           <th>Score</th>
           <th>Résultat</th>
         </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let game of gameHistory">
-          <td>
-            <strong *ngIf="game.gameTypeId === 1">🐍 Snake</strong>
-            <strong *ngIf="game.gameTypeId === 2">❌ Tic-Tac-Toe</strong>
-            <strong *ngIf="game.gameTypeId === 3">🔢 Sudoku</strong>
-            <strong *ngIf="game.gameTypeId === 4">✊ Chifoumi</strong>
-          </td>
-          
-          <td>{{ game.startTime | date:'dd/MM HH:mm' }}</td>
-          <td>{{ game.scorePlayer1 }} pts</td>
-          
-          <td [class.win]="game.scorePlayer1 > 0" [class.lose]="game.scorePlayer1 === 0">
-            {{ game.scorePlayer1 > 0 ? 'Terminé' : 'Échec' }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
 
-    <div *ngIf="gameHistory.length === 0" class="empty-msg">
-      <p>Aucune partie dans la base de données. Va jouer un match !</p>
+        <tr>
+          <td>Snake</td>
+          <td>08/03</td>
+          <td>150</td>
+          <td class="win">Gagné</td>
+        </tr>
+
+        <tr>
+          <td>Sudoku</td>
+          <td>06/03</td>
+          <td>80</td>
+          <td class="lose">Perdu</td>
+        </tr>
+      </table>
     </div>
+
   </div>
 
+  <div class="create-player card">
+  <h4>➕ Créer un joueur</h4>
+
+  <input
+    type="text"
+    placeholder="Nom d'utilisateur"
+    [(ngModel)]="newUsername"
+  />
+
+  <input
+    type="email"
+    placeholder="Email"
+    [(ngModel)]="newEmail"
+  />
+
+  <button class="btn-primary" (click)="addPlayer()">
+    Ajouter
+  </button>
+  </div>
 </div>

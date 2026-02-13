@@ -4,6 +4,7 @@ import com.gamesite.dto.GameTypeDto;
 import com.gamesite.entity.GameType;
 import com.gamesite.repository.GameTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
